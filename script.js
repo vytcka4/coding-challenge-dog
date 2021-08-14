@@ -22,21 +22,20 @@ chechDogs(...julia, ...kate);
 const ages = [5, 2, 4, 1, 15, 8, 3];
 
 calcAverageHumanAge = function (ages) {
-  const humanAge = ages.map(function (age) {
-    if (age <= 2) {
-      return 2 * age;
-    } else {
-      return 16 + age * 4;
-    }
-  });
+  const humanAge = (ages) =>
+    ages
+      .map((age) => {
+        if (age <= 2) {
+          2 * age;
+        } else {
+          16 + age * 4;
+        }
+      })
+      .filter((age) => age > 18)
+      .reduce((acc, i, age, arr) => {
+        acc + age;
+      }, 0);
   console.log(humanAge);
-  const humanAgeFiltered = humanAge.filter((age) => age > 18);
-  console.log(humanAgeFiltered);
-  const average =
-    humanAgeFiltered.reduce(function (acc, age) {
-      return acc + age;
-    }, 0) / humanAgeFiltered.length;
-  console.log(average);
 };
 
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
